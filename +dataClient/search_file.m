@@ -24,7 +24,7 @@ function results_table = search_file(varargin)
         end
     end
     % 2. Get the API server URL
-    api_url = data_ingestion.get_api_url();
+    api_url = dataClient.get_api_url();
     search_endpoint = string(api_url) + '/search';
 
     % 3. Make the web request

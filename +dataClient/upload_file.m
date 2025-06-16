@@ -19,7 +19,7 @@ function response_data = upload_file(data_filepath, metadata_filepath)
     end
 
     % 2. Get the API endpoint
-    api_url = data_ingestion.get_api_url();
+    api_url = dataClient.get_api_url();
     upload_endpoint = string(api_url) + "/uploadfile/";
     uri = URI(upload_endpoint);
 

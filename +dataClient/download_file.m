@@ -14,7 +14,7 @@ function downloaded_filepath = download_file(file_id, varargin)
     end
     
     file_id = char(file_id);
-    api_url = data_ingestion.get_api_url();
+    api_url = dataClient.get_api_url();
     download_endpoint = string(api_url) + '/download/' + string(file_id);
     
     final_output_path = ''; % Initialize variable
