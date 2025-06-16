@@ -16,10 +16,56 @@ The client is distributed as a MATLAB Toolbox file (`.mltbx`) for easy installat
 Methods can be called from a script or in the command-line with "dataClient.<method_name>(args)" i.e: dataClient.search_file('author', 'wkm2109')
 
 ## Features
-### Generate a Metadata Template 
+### 1. Generate a Metadata Template (generate_metadata_template)
 This creates a blank .yml file to guide you in filling out required metadata for an upload
 ```matlab
 % This command creates the template file 'new_experiment.yml' in your current folder.
 >> data_ingestion.generate_metadata_template('new_experiment.yml');
 ```
+After running this, open `new_experiment.yml` in a text editor and fill out the fields.
 
+### 2. Upload a File (upload_file)
+Uploads a data file along with its completed metadata file.
+```matlab
+% Assumes 'my_data.csv' and 'my_data.yml' are in the current folder.
+>> response = dataClient.upload_file('my_data.csv', 'my_data.yml');
+
+% The 'response' variable will contain a struct with details from the server,
+% including the new file's unique ID.
+```
+
+### 3. Search for Files (search_file)
+Searches the database based on metadata criteria. The function returns a `table` containing the results.
+```matlab
+% Example 1: Find all files from a specific author
+>> author_results = dataClient.search_file('author', 'MATLAB-Tester');
+>> disp(author_results);
+
+% Example 2: Find all '.txt' files for a specific project
+>> project_files = data_ingestion.search_file('research_project_id', 'Client-Test-Project', 'file_type', 'txt');
+>> disp(project_files);
+```
+Search Criteria:
+- `research_project_id: str`
+- `author: str`
+- `file_type: str`
+- `experiment_type: str`
+- `tags_contain: str`
+- `date_after: str` (YYYY-MM-DD)
+- `date_before: str` (YYYY-MM-DD)
+
+### 4. Download a file (download_file)
+Downloads a file using the unique `file_id` obtained from a search. Defaults to working directory if no filepath is provided.
+Sample workflow: 
+```matlab
+% First, get a file_id from a search result
+>> search_results = dataClient.search_file('author', 'wkm2109');
+>> id_to_download = search_results.file_id{1};
+
+% Example 1: Download the file to the current MATLAB folder
+>> dataClient.download_file(id_to_download);
+
+% Example 2: Download the file to a specific 'downloads' subfolder
+>> mkdir('downloads'); % Create the folder first if it doesn't exist
+>> dataClient.download_file(id_to_download, 'downloads');
+```
