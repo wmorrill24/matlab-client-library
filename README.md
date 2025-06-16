@@ -13,7 +13,8 @@ The client is distributed as a MATLAB Toolbox file (`.mltbx`) for easy installat
 2.  Under the latest release, download the `.mltbx` file from the "Assets" section.
 3.  Open MATLAB, navigate to the folder where you saved the downloaded file, and simply **double-click the `.mltbx` file**.
 
-Methods can be called from a script or in the command-line with "dataClient.<method_name>(args)" i.e: dataClient.search_file('author', 'wkm2109')
+Methods can be called from a script or in the command-line with "dataClient.<method_name>(args)" 
+i.e: dataClient.search_file('author', 'wkm2109')
 
 ## Features
 ### 1. Generate a Metadata Template (generate_metadata_template)
@@ -35,7 +36,8 @@ Uploads a data file along with its completed metadata file.
 ```
 
 ### 3. Search for Files (search_file)
-Searches the database based on metadata criteria. The function returns a `table` containing the results.
+Searches the database based on metadata criteria. 
+The function returns a `table` containing the results.
 ```matlab
 % Example 1: Find all files from a specific author
 >> author_results = dataClient.search_file('author', 'MATLAB-Tester');
@@ -55,7 +57,8 @@ Search Criteria:
 - `date_before: str` (YYYY-MM-DD)
 
 ### 4. Download a file (download_file)
-Downloads a file using the unique `file_id` obtained from a search. Defaults to working directory if no filepath is provided.
+Downloads a file using the unique `file_id` obtained from a search. 
+Defaults to working directory if no filepath is provided.
 Sample workflow: 
 ```matlab
 % First, get a file_id from a search result
