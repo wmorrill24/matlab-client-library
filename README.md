@@ -3,16 +3,12 @@
 Client library for uploading, searching, and downloading files from the data lake.
 
 ## Requirements
-- MATLAB R2021a or newer (Recommended)
+- MATLAB R2019a or newer
+- Network Adress of running API server
 
 ## Setup
-1. Clone this repository to your computer.
-2. Open MATLAB and navigate to the cloned repository's folder.
-3. Run the `install` script by typing the following in the MATLAB Command Window:
-   ```matlab
-   >> install
-   ```
-This will add the client to your MATLAB path.
+The client is distributed as a MATLAB Toolbox file (`.mltbx`) for easy, one-click installation.
 
-## Usage
-*Coming soon...*
+1.  Navigate to the [**Releases Page**](https://github.com/wmorrill24/matlab-client-library/releases) of this GitHub repository.
+2.  Under the latest release, download the `.mltbx` file from the "Assets" section.
+3.  Open MATLAB, navigate to the folder where you saved the downloaded file, and simply **double-click the `.mltbx` file**.
