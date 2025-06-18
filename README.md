@@ -35,6 +35,25 @@ Uploads a data file along with its completed metadata file.
 % including the new file's unique ID.
 ```
 
+### 5. Upload a Folder (upload_folder)
+Compresses a folder into a ZIP file and uploads it with its metadata. This is useful for uploading complex datasets, such as those from a full experiment, that include multiple files and subdirectories.
+```matlab
+% Example: Upload a folder named 'my_experiment_data' 
+% with its corresponding metadata file 'my_experiment_data.yml'.
+
+% First, create and fill out your metadata file. You can use the
+% generate_metadata_template method for this. Metadata will apply to
+% every file in your folder.
+>> dataClient.generate_metadata_template('my_experiment_data.yml');
+% (Now, manually edit 'my_experiment_data.yml' to add your metadata)
+
+% Once the metadata is ready, upload the folder:
+>> response = dataClient.upload_folder('path/to/my_experiment_data', 'my_experiment_data.yml');
+
+% The 'response' variable will contain a struct with details for each 
+% file that was uploaded from the folder.
+```
+
 ### 3. Search for Files (search_file)
 Searches the database based on metadata criteria. 
 The function returns a `table` containing the results.
@@ -48,7 +67,7 @@ The function returns a `table` containing the results.
 >> disp(project_files);
 ```
 Search Criteria:
-- `research_project_id: str`
+- `project_id: str`
 - `author: str`
 - `file_type: str`
 - `experiment_type: str`
