@@ -5,7 +5,7 @@ function url = get_api_url(varargin)
     %   current_url = data_ingestion.get_api_url()             % To get
     
     persistent api_url;
-    default_url = 'https://9092-156-111-111-152.ngrok-free.app';
+    default_url = 'http://156.145.114.75:8001';
 
     if nargin > 0
         new_url = varargin{1};
